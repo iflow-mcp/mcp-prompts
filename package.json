@@ -1,5 +1,5 @@
 {
-  "name": "@sparesparrow/mcp-prompts",
+  "name": "@iflow-mcp/mcp-prompts",
   "version": "3.12.3",
   "description": "A robust, extensible server for managing, versioning, and serving prompts and templates for LLM applications, built on the Model Context Protocol (MCP) with AWS integration",
   "main": "dist/mcp-server-standalone.js",

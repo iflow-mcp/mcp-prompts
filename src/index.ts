@@ -74,11 +74,12 @@ function rateLimit(req: express.Request, res: express.Response, next: express.Ne
 
 async function startServer() {
   try {
-    console.log('Starting server...');
+    // Use stderr for startup messages to avoid interfering with MCP protocol
+    console.error('Starting server...');
     const mode = process.env.MODE || 'mcp';
     const port = parseInt(process.env.PORT || '3000');
     const host = process.env.HOST || '0.0.0.0';
-    console.log('Mode:', mode, 'Port:', port, 'Host:', host);
+    console.error('Mode:', mode, 'Port:', port, 'Host:', host);
 
     // Initialize AWS adapters
     const promptRepository = new DynamoDBAdapter(
@@ -148,9 +149,9 @@ async function startServer() {
 
     if (mode === 'mcp') {
       // Start MCP server
-      console.log('Starting MCP server...');
+      console.error('Starting MCP server...');
       await mcpServer.start();
-      console.log('MCP server started successfully');
+      console.error('MCP server started successfully');
       logger.info('MCP Prompts server started in MCP mode');
     } else if (mode === 'http') {
       // Start HTTP server
